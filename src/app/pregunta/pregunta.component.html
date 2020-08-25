@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-12 text-center mt-5 mb-5">
+    <h2>{{question}}</h2>
+  </div>
+</div>
+<div class="row text-center text-center no-gutters" >
+  <button type="button"
+          class="btn btn-primary col-12 rounded-0"
+          [ngClass]="'col-sm-'+(12/answers.length)"
+          *ngFor="let answer of answers;let i = index"
+          (click)="selectAnswers=answer.correct;btnTouch=true;">
+    {{answer.answer}}
+  </button>
+</div>
+<div class="row text-center no-gutters" *ngIf="btnTouch">
+  <div class="alert alert-success mt-4 w-100" *ngIf="selectAnswers">
+  <strong>Respuesta correcta!!!</strong>
+</div>
+  <div class="alert alert-danger mt-4 w-100" *ngIf="!selectAnswers">
+    <strong>Respuesta Incorrecta!!!</strong>
+  </div>
+</div>
